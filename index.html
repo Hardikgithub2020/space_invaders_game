@@ -7,6 +7,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     </head>
     <body>
         <audio autoplay="autoplay"><source src="sounds/scifi.mp3" type="audio/mpeg" /></audio>
@@ -16,16 +17,25 @@
             <div class="point-box">
                   <p id="point-text">Point :</p>
                   <p id="count1">0</p>
-                  <p id="count2"> / 6</p>
+                  <p id="count2">/8</p>
                 </div>
-            <!-- <button type="button" id="startBtn" onclick="gameLoop()"></button> -->
+                 
+                <div class="container">
+                <button id="startBtn" class="btn" onclick="gameStart()">Play</button>
+                <button id="continueBtn" class ="btn" onclick="gameContinue()">Continue</button>
+                <button id="retreatBtn" class="btn" onclick="gameRetreat()">Retreat</button>
+                </div>
+
+ 
+            <!-- <button type="button" id="startBtn" onclick="gameLoop()">start</button> -->
             <div id="uss" class="uss bg">
             </div>
             <div id="missiles"></div>
             <!-- <div class="missile"></div> -->
-            <!-- <div class="enemy"></div> - ->
+            <!-- <div class="enemy"></div>  -->
             <!-- <div id="enemy2"></div> -->
             <div id="enemies"></div>
+            <div id="kings"></div>
         </div>
         
          <script type="text/javascript" src="app.js"></script>

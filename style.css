@@ -37,9 +37,9 @@
 }
 
 .enemy{
-    background-image: url('assets/enemyKing1.png');
-    height: 400px;
-    width: 400px;
+    background-image: url('assets/enemy2.png');
+    height: 300px;
+    width: 300px;
     position: absolute;
     background-repeat: no-repeat;
 }
@@ -50,43 +50,79 @@
     position: absolute;
 }
 
-/* #enemy2{
-    background-image: url('assets/enemyKing1.png');
-    height: 300px;
-    width: 300px;
+.king{
+    background-image: url('assets/corona11.png');
+    height:700px;
+    width: 700px;
     position: absolute;
     background-repeat: no-repeat;
-    top: 320px;
-    right: 50px;
-} */
+    top: 300px;
+    left: 1700px;
+} 
+
+#kings {
+    height: 1500px;
+    width: 3000px;
+    position: absolute;
+}
+
 
 .point-box {
-    width: 500px;
+    width: 700px;
     margin: 20px;
 
   }
 
+  body{
+      font-family: Press+Start+2P;
+  }
   #point-text {
     float: left;
-    font-family: monospace;
-    font-size: 30px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 40px;
     font-weight: bold;
     color: #f2ecff;
     margin: 15px 0 0 20%;
   }
   #count1{
     float: left;
-    font-family: monospace;
-    font-size: 45px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 40px;
     font-weight: bold;
     color: #f9f871;
     margin: 10px 10px 0 60px;
   }
   #count2 {
     float: left;
-    font-family: monospace;
-    font-size: 36px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 40px;
     font-weight: bold;
     color: #f2ecff;
     margin: 15px 0 0 0;
   }
+
+  .container{
+      display: flex;
+      justify-content: center;
+}
+
+  .btn{
+    float: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size:30px;
+    padding:3px 10px;
+    border-radius:10px;
+  }
+
+  #startBtn{
+    background-color: blue;
+  }
+
+  #continueBtn{
+    background-color: greenyellow;
+  }
+
+  #retreatBtn{
+    background-color:red;
+  }
+

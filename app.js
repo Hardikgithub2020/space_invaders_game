@@ -17,12 +17,19 @@ uss = {
 missiles = [];
 
 enemies = [
-    {top: 900, left: 2200},
-    {top: 600, left: 3000},
-    {top: 700, left: 1900},
-    {top: 300, left: 2100},
+    {top: 400, left: 1100},
+    {top: 1100, left: 2200},
+    {top: 600, left: 2000},
+    {top: 800, left: 1500},
+    {top: 200, left: 2400},
     {top: 50, left: 1700},
-    {top: 800, left: 2800}
+    {top: 800, left: 2600}
+];
+
+kings = [
+    {top: 200, left: 2900},
+    // {top: 50, left: 2000},
+
 ];
 
 // function randomPiece(){
@@ -48,7 +55,8 @@ document.onkeydown = function(e){
         moveUss2()
     }
     else if(e.keyCode === 32){
-        console.log("FIRE! You are attacking a Corona Virus!")
+        console.log("%cFIRE! You are attacking a Corona Virus!",
+        "color:blue;font-family:system-ui;font-size:15px;-webkit-text-stroke: 1px black;font-weight:bold")
         audio1.play()
         audio.play()
         missiles.push({
@@ -61,9 +69,7 @@ document.onkeydown = function(e){
     }
 
 }
-
-
-        
+      
 
 function moveUss1(){
     document.getElementById('uss').style.left = uss.left + "0.3px";
@@ -91,7 +97,7 @@ function moveMissiles(){
 
 function drawEnemies(){
     document.getElementById('enemies').innerHTML = "";
-    for(enemy = 0; enemy < enemies.length; enemy = enemy + 1){
+    for(enemy = 0; enemy < enemies.length; enemy++){
         document.getElementById('enemies').innerHTML += 
         `<div class='enemy' style='left:${enemies[enemy].left}px; 
         top:${enemies[enemy].top}px'></div>`;
@@ -115,6 +121,20 @@ function drawEnemies(){
         }
     }
 
+    score = 0;
+
+    function getScore(){
+        score = document.getElementById("count1");
+        count1.innerHTML++
+
+        if(count1.innerHTML == "8"){
+            console.log("%cYou Win!!!",
+                    "color:magenta;font-family:system-ui;font-size:90px;-webkit-text-stroke: 1px black;font-weight:bold")
+        }
+
+    }
+
+     
     function collisionDetection(){
         for(enemy = 0; enemy < enemies.length; enemy++){
             for(var missile = 0; missile < missiles.length; missile = missile + 1){
@@ -123,9 +143,46 @@ function drawEnemies(){
                     (missiles[missile].top <= enemies[enemy].top )
 
                 ){                
-                    console.log("You KILLED a Corona Virus!!!");
+                    console.log("%cYou KILLED a Corona Virus!!!",
+                    "color:green;font-family:system-ui;font-size:25px;-webkit-text-stroke: 1px black;font-weight:bold")
                     enemies.splice(enemy, 1);
                     missiles.splice(missile, 1);
+                    getScore();
+                }
+                
+        }
+        }
+        
+    }
+
+    function drawKings(){
+        document.getElementById('kings').innerHTML = "";
+        for(king = 0; king < kings.length; king++){
+            document.getElementById('kings').innerHTML += 
+            `<div class='king' style='left:${kings[king].left}px; 
+            top:${kings[king].top}px'></div>`;
+        }
+        }
+    
+        function moveKings(){
+            for(king = 0; king < kings.length; king++){
+                kings[king].left = kings[king].left - 5;
+            }
+        }
+    
+    function collisionDetectionKing(){
+        for(king = 0; king < kings.length; king++){
+            for(var missile = 0; missile < missiles.length; missile = missile + 1){
+                if(
+                    (missiles[missile].left >= kings[king].left ) &&
+                    (missiles[missile].top <= kings[king].top )
+
+                ){                
+                    console.log("%cYou KILLED the KING!!!",
+                    "color:red;font-family:system-ui;font-size:40px;-webkit-text-stroke: 1px black;font-weight:bold")
+                    kings.splice(king, 1);
+                    missiles.splice(missile, 1);
+                    getScore();
                 }
                 
         }
@@ -140,7 +197,22 @@ function gameLoop(){
     drawMissiles()
     moveEnemies()
     drawEnemies()
+    moveKings()
+    drawKings()
     collisionDetection()
+    collisionDetectionKing()
+    
 }
 
+function gameStart(){
 gameLoop();
+}
+
+function gameContinue(){
+gameLoop();
+}
+
+function gameRetreat(){
+gameLoop();
+}
+
